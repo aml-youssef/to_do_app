@@ -66,17 +66,7 @@ class Tasks extends StateNotifier<List<Task>> {
     try {
       state = await TaskDatabase.instance.readAllRows();
     } catch (e) {
-      state = [
-        Task(
-            id: 20,
-            date: DateTime.now(),
-            startTime: TimeOfDay.now(),
-            endTime: TimeOfDay.now(),
-            reminder: Reminder.dayBefore,
-            title: 'do it now',
-            isComplete: false,
-            isFavorite: false),
-      ];
+      state = [];
     }
   }
 

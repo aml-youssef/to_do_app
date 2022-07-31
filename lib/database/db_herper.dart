@@ -78,7 +78,7 @@ class TaskDatabase {
 
     final map = await db.query(
       tasksTableName,
-      orderBy: orderBy,
+      // orderBy: orderBy,
     );
     if (map.isNotEmpty) {
       return map.map((task) => Task.fromMap(task)).toList();
