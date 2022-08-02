@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'Task_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/tasks.dart';
 import '../models/task.dart';
-import '../constants/provider.dart';
+import '../providers/provider.dart';
 import './schedule_task_Item.dart';
 import 'package:intl/intl.dart';
 
@@ -13,7 +14,7 @@ class ScheduleTaskList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    List<Task> tasks = ref.watch(filteredSchedleListProvider(date));
+    AsyncValue<List<Task>> tasks = ref.watch(filteredSchedleListProvider(date));
     return Padding(
       padding: const EdgeInsets.all(16.0),
       child: Column(
@@ -28,14 +29,22 @@ class ScheduleTaskList extends ConsumerWidget {
               Text(DateFormat('dd MMM,yyyy').format(date)),
             ],
           ),
-          ListView.builder(
-            scrollDirection: Axis.vertical,
-            shrinkWrap: true,
-            padding: const EdgeInsets.symmetric(vertical: 8.0),
-            itemBuilder: (cxt, i) => ScheduleTaskItem(
-              task: tasks[i],
+          tasks.when(
+            data: (data) => ListView.builder(
+              scrollDirection: Axis.vertical,
+              shrinkWrap: true,
+              padding: const EdgeInsets.symmetric(vertical: 8.0),
+              itemBuilder: (cxt, i) => ScheduleTaskItem(
+                task: data[i],
+              ),
+              itemCount: data.length,
             ),
-            itemCount: tasks.length,
+            error: (e, s) => const Center(
+              child: Text('Uh oh. Something went wrong!'),
+            ),
+            loading: () => const Center(
+              child: CircularProgressIndicator(),
+            ),
           ),
         ],
       ),

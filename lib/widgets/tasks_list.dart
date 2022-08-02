@@ -1,9 +1,10 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
 import 'Task_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../models/tasks.dart';
 import '../models/task.dart';
-import '../constants/provider.dart';
+import '../providers/provider.dart';
 import './schedule_task_Item.dart';
 
 class TaskList extends ConsumerWidget {
@@ -12,13 +13,21 @@ class TaskList extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, ref) {
-    List<Task> tasks = ref.watch(filteredTodoListProvider(type));
+    AsyncValue<List<Task>> tasks = ref.watch(filteredTodoListProvider(type));
 
-    return ListView.builder(
-      itemBuilder: (cxt, i) => TaskItem(
-        task: tasks[i],
+    return tasks.when(
+      data: (data) => ListView.builder(
+        itemBuilder: (cxt, i) => TaskItem(
+          task: data[i],
+        ),
+        itemCount: data.length,
       ),
-      itemCount: tasks.length,
+      error: (e, s) => const Center(
+        child: Text('Uh oh. Something went wrong!'),
+      ),
+      loading: () => const Center(
+        child: CircularProgressIndicator(),
+      ),
     );
   }
 }

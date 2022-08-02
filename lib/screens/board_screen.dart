@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
-import 'package:to_do_app/widgets/loading_screen.dart';
 import '../widgets/tasks_list.dart';
-import '../constants/provider.dart';
+import '../providers/provider.dart';
 import '../screens/add_task_screen.dart';
 import '../models/task.dart';
 import '../models/tasks.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './schedule_screen.dart';
+import '../models/task.dart';
 
 class BoardScreen extends ConsumerStatefulWidget {
   const BoardScreen({Key? key}) : super(key: key);
@@ -46,14 +46,15 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
+          // elevation: 20,
           title: const Text('Board'),
           actions: [
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.search,
-              ),
-            ),
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: const Icon(
+            //     Icons.search,
+            //   ),
+            // ),
             IconButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(ScheduleScreen.RoutName);
@@ -62,12 +63,12 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
                 Icons.notifications,
               ),
             ),
-            IconButton(
-              onPressed: () {},
-              icon: const Icon(
-                Icons.menu,
-              ),
-            ),
+            // IconButton(
+            //   onPressed: () {},
+            //   icon: const Icon(
+            //     Icons.menu,
+            //   ),
+            // ),
           ],
           bottom: const TabBar(
             //labelPadding: ,
@@ -85,8 +86,6 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
         ),
         body: TabBarView(
           children: [
-            // _isLoading ? const LoadingScreen() : TaskList(FilterType.all),
-
             TaskList(FilterType.all),
             TaskList(FilterType.completed),
             TaskList(FilterType.uncompleted),
@@ -94,7 +93,7 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
           ],
         ),
         bottomNavigationBar: Padding(
-          padding: const EdgeInsets.all(8.0),
+          padding: const EdgeInsets.all(16.0),
           child: ElevatedButton(
             child: const Text('Add a Task'),
             onPressed: () {

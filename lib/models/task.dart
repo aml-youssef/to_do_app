@@ -8,6 +8,13 @@ enum Reminder {
   r10minBefore,
 }
 
+enum FilterType {
+  all,
+  completed,
+  uncompleted,
+  favorite,
+}
+
 const String tasksTableName = 'tasks';
 
 class TaskFields {

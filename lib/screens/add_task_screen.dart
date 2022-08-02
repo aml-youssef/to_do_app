@@ -6,7 +6,9 @@ import '../widgets/form_items.dart';
 import '../models/tasks.dart';
 import '../models/task.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../constants/provider.dart';
+import '../providers/provider.dart';
+import '../widgets/dropdown_form_field.dart';
+import '../widgets/time_form_field.dart';
 
 class AddTaskScreen extends ConsumerStatefulWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
@@ -76,11 +78,11 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
             child: Column(
               children: [
                 titleFormField(),
-                deadlineFormField(context),
+                DeadlineFormField(),
                 Row(
                   children: [
-                    timeFormField(context, 'Start time', true),
-                    timeFormField(context, 'End time', false),
+                    TimeFormField(lable: 'Start time', start: true),
+                    TimeFormField(lable: 'End time', start: false),
                   ],
                 ),
                 DropDownFormField(
@@ -99,7 +101,7 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
         ),
       ),
       bottomNavigationBar: Padding(
-        padding: const EdgeInsets.all(8.0),
+        padding: const EdgeInsets.all(16.0),
         child: ElevatedButton(
           onPressed: _saveForm,
           child: const Text('Create a Task'),

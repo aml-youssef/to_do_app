@@ -26,12 +26,13 @@ class ToDoApp extends StatelessWidget {
       theme: ThemeData(
         appBarTheme: const AppBarTheme(
             backgroundColor: Colors.white,
-            foregroundColor: Colors.black //here you can give the text color
+            foregroundColor: Colors.black //text color
             ),
         tabBarTheme: const TabBarTheme(
           labelColor: Colors.black,
         ),
         // primaryTextTheme: TextTheme(headline6: TextStyle(color: Colors.red)),
+        // buttonTheme: ButtonThemeData(textTheme: ButtonTextTheme.primary,),
 
         // colorScheme: const ColorScheme.light()
         //     .copyWith(primary: Colors.white10, secondary: Colors.yellow,),
@@ -51,7 +52,11 @@ class ToDoApp extends StatelessWidget {
             ),
           ),
         ),
-        //primarySwatch: Colors.white,
+        timePickerTheme: TimePickerThemeData(
+            backgroundColor: const Color.fromARGB(255, 39, 240, 143),
+            shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(16.0))),
+
         toggleableActiveColor: const Color.fromARGB(255, 238, 34, 34),
         splashColor: Colors.yellow,
         elevatedButtonTheme: ElevatedButtonThemeData(
@@ -65,3 +70,11 @@ class ToDoApp extends StatelessWidget {
     );
   }
 }
+
+      // data: ThemeData.light().copyWith(
+      //     primaryColor: const Color(0xFF8CE7F1),
+      //     accentColor: const Color(0xFF8CE7F1),
+      //     colorScheme: ColorScheme.light(primary: const Color(0xFF8CE7F1)),
+          // buttonTheme: ButtonThemeData(
+          //   textTheme: ButtonTextTheme.primary
+          // ),

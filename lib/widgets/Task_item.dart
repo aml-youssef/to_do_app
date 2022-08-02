@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/src/foundation/key.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../constants/provider.dart';
+import '../providers/provider.dart';
 import '../models/task.dart';
 
 class TaskItem extends ConsumerWidget {
@@ -15,11 +15,22 @@ class TaskItem extends ConsumerWidget {
     ref.watch(tasksProvider);
 
     return CheckboxListTile(
+      checkboxShape: RoundedRectangleBorder(
+        borderRadius: BorderRadius.circular(4),
+      ),
+      // activeColor: const Color.fromARGB(255, 78, 247, 165),
+      // checkColor: const Color.fromARGB(255, 78, 247, 165),
+
       onChanged: (bool? value) async {
         await ref.read(tasksProvider.notifier).toggle(task.id!);
       },
+      controlAffinity: ListTileControlAffinity.leading,
+
       value: task.isComplete,
-      title: Text(task.title),
+      title: Text(task.title, softWrap: true),
+      tileColor: task.isFavorite
+          ? const Color.fromARGB(255, 250, 145, 145)
+          : Colors.white,
       secondary: PopupMenuButton(
         onSelected: (action) async {
           if (action == "remove") {

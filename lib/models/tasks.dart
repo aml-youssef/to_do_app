@@ -2,11 +2,11 @@ import 'task.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import 'package:sqflite/sqflite.dart';
-import '../database/db_herper.dart';
+import '../database/task_database.dart';
 
 class Tasks extends StateNotifier<List<Task>> {
   Tasks() : super([]) {
-    fetchAlldata();
+    fetchAlldata().then((value) {});
   }
 
   Future<void> toggle(int id) async {
