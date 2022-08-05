@@ -16,12 +16,16 @@ class TaskList extends ConsumerWidget {
     AsyncValue<List<Task>> tasks = ref.watch(filteredTodoListProvider(type));
 
     return tasks.when(
-      data: (data) => ListView.builder(
-        itemBuilder: (cxt, i) => TaskItem(
-          task: data[i],
-        ),
-        itemCount: data.length,
-      ),
+      data: (data) => data.isEmpty
+          ? const Center(
+              child: Text('no taskes yet'),
+            )
+          : ListView.builder(
+              itemBuilder: (cxt, i) => TaskItem(
+                task: data[i],
+              ),
+              itemCount: data.length,
+            ),
       error: (e, s) => const Center(
         child: Text('Uh oh. Something went wrong!'),
       ),

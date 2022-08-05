@@ -4,6 +4,7 @@ import '../models/task.dart';
 
 TextEditingController startTimeController = TextEditingController();
 TextEditingController endTimeController = TextEditingController();
+int toDouble(TimeOfDay myTime) => myTime.hour * 60 + myTime.minute;
 
 class TimeFormField extends StatelessWidget {
   String lable;
@@ -31,6 +32,15 @@ class TimeFormField extends StatelessWidget {
                 if (value == null || value.isEmpty) {
                   return 'provie a value here';
                 }
+
+                if (startTimeController.text.isNotEmpty &&
+                    endTimeController.text.isNotEmpty &&
+                    toDouble(
+                            Task.stringToTimeOfDay(startTimeController.text)) >=
+                        toDouble(
+                            Task.stringToTimeOfDay(endTimeController.text))) {
+                  return 'provid a valid time';
+                }
                 return null;
               },
               onSaved: (value) {
@@ -40,6 +50,7 @@ class TimeFormField extends StatelessWidget {
                   endTimeController.text = value!;
                 }
               },
+              readOnly: true,
               controller: start ? startTimeController : endTimeController,
               onTap: () async {
                 TimeOfDay? time = await showTimePicker(

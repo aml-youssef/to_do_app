@@ -16,7 +16,7 @@ class ToDoApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Flutter Demo',
+      title: 'To Do',
       home: BoardScreen(),
       routes: {
         AddTaskScreen.routName: (cxt) => AddTaskScreen(),
@@ -39,6 +39,12 @@ class ToDoApp extends StatelessWidget {
         inputDecorationTheme: const InputDecorationTheme(
           fillColor: Color.fromARGB(255, 230, 230, 230),
           filled: true,
+          errorBorder: OutlineInputBorder(
+            borderSide: BorderSide.none,
+            borderRadius: BorderRadius.all(
+              Radius.circular(16.0),
+            ),
+          ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(
@@ -70,11 +76,3 @@ class ToDoApp extends StatelessWidget {
     );
   }
 }
-
-      // data: ThemeData.light().copyWith(
-      //     primaryColor: const Color(0xFF8CE7F1),
-      //     accentColor: const Color(0xFF8CE7F1),
-      //     colorScheme: ColorScheme.light(primary: const Color(0xFF8CE7F1)),
-          // buttonTheme: ButtonThemeData(
-          //   textTheme: ButtonTextTheme.primary
-          // ),

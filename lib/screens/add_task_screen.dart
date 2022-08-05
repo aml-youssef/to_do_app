@@ -9,6 +9,8 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
 import '../widgets/dropdown_form_field.dart';
 import '../widgets/time_form_field.dart';
+import '../widgets/deadline_form_field.dart';
+import '../widgets/title_form_field.dart';
 
 class AddTaskScreen extends ConsumerStatefulWidget {
   const AddTaskScreen({Key? key}) : super(key: key);
@@ -77,7 +79,7 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                titleFormField(),
+                TitleFormField(),
                 DeadlineFormField(),
                 Row(
                   children: [

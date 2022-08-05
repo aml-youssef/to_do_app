@@ -19,26 +19,37 @@ class ScheduleTaskList extends ConsumerWidget {
       padding: const EdgeInsets.all(16.0),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              Text(
-                DateFormat('EEEE').format(date),
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-              Text(DateFormat('dd MMM,yyyy').format(date)),
-            ],
+          Padding(
+            padding: const EdgeInsets.only(bottom: 8.0),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text(
+                  DateFormat('EEEE').format(date),
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                ),
+                Text(DateFormat('dd MMM,yyyy').format(date)),
+              ],
+            ),
           ),
           tasks.when(
-            data: (data) => ListView.builder(
-              scrollDirection: Axis.vertical,
-              shrinkWrap: true,
-              padding: const EdgeInsets.symmetric(vertical: 8.0),
-              itemBuilder: (cxt, i) => ScheduleTaskItem(
-                task: data[i],
-              ),
-              itemCount: data.length,
-            ),
+            data: (data) => data.isEmpty
+                ? const Expanded(
+                    child: Center(
+                      child: Text('no taskes for this day'),
+                    ),
+                  )
+                : Expanded(
+                    child: ListView.builder(
+                      // scrollDirection: Axis.vertical,
+                      // shrinkWrap: true,
+                      padding: const EdgeInsets.symmetric(vertical: 8.0),
+                      itemBuilder: (cxt, i) => ScheduleTaskItem(
+                        task: data[i],
+                      ),
+                      itemCount: data.length,
+                    ),
+                  ),
             error: (e, s) => const Center(
               child: Text('Uh oh. Something went wrong!'),
             ),

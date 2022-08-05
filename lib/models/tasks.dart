@@ -6,7 +6,7 @@ import '../database/task_database.dart';
 
 class Tasks extends StateNotifier<List<Task>> {
   Tasks() : super([]) {
-    fetchAlldata().then((value) {});
+    fetchAlldata(); //.then((value) {});
   }
 
   Future<void> toggle(int id) async {

@@ -31,7 +31,9 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
     //     _isLoading = false;
     //   });
     // });
-    // super.initState();
+    // ref.read(tasksProvider.notifier).fetchAlldata();
+
+    super.initState();
   }
 
   @override

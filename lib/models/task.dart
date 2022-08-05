@@ -70,8 +70,10 @@ class Task {
   }
 
   static TimeOfDay stringToTimeOfDay(String input) {
+    TimeOfDay day;
     final format = DateFormat.jm(); //"6:00 AM"
-    return TimeOfDay.fromDateTime(format.parse(input));
+    day = TimeOfDay.fromDateTime(format.parse(input));
+    return day;
   }
 
   static DateTime stringToDateTime(String input) {
