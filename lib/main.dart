@@ -5,7 +5,8 @@ import './screens/add_task_screen.dart';
 import './screens/schedule_screen.dart';
 
 void main() {
-  runApp(const ProviderScope(child: ToDoApp()));
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  runApp(ProviderScope(child: ToDoApp()));
   // runApp(ToDoApp());
 }
 
@@ -39,12 +40,6 @@ class ToDoApp extends StatelessWidget {
         inputDecorationTheme: const InputDecorationTheme(
           fillColor: Color.fromARGB(255, 230, 230, 230),
           filled: true,
-          errorBorder: OutlineInputBorder(
-            borderSide: BorderSide.none,
-            borderRadius: BorderRadius.all(
-              Radius.circular(16.0),
-            ),
-          ),
           focusedBorder: OutlineInputBorder(
             borderSide: BorderSide.none,
             borderRadius: BorderRadius.all(

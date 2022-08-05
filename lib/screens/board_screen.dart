@@ -10,37 +10,70 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './schedule_screen.dart';
 import '../models/task.dart';
 
-class BoardScreen extends ConsumerStatefulWidget {
+// class BoardScreen extends ConsumerStatefulWidget {
+//   const BoardScreen({Key? key}) : super(key: key);
+
+//   @override
+//   ConsumerState<BoardScreen> createState() => _BoardScreenState();
+// }
+
+// class _BoardScreenState extends ConsumerState<BoardScreen> {
+
+//   @override
+//   Widget build(BuildContext context) {
+//     return DefaultTabController(
+//       length: 4,
+//       child: Scaffold(
+//         appBar: AppBar(
+//           title: const Text('Board'),
+//           actions: [
+//             IconButton(
+//               onPressed: () {
+//                 Navigator.of(context).pushNamed(ScheduleScreen.RoutName);
+//               },
+//               icon: const Icon(
+//                 Icons.notifications,
+//               ),
+//             ),
+//           ],
+//           bottom: const TabBar(
+//             //labelPadding: ,
+//             // onTap: (value) {
+//             // },
+//             isScrollable: true,
+//             indicatorSize: TabBarIndicatorSize.label,
+//             tabs: [
+//               Tab(text: 'all'),
+//               Tab(text: 'completed'),
+//               Tab(text: 'uncompleted'),
+//               Tab(text: 'favorites'),
+//             ],
+//           ),
+//         ),
+//         body: TabBarView(
+//           children: [
+//             TaskList(FilterType.all),
+//             TaskList(FilterType.completed),
+//             TaskList(FilterType.uncompleted),
+//             TaskList(FilterType.favorite),
+//           ],
+//         ),
+//         bottomNavigationBar: Padding(
+//           padding: const EdgeInsets.all(16.0),
+//           child: ElevatedButton(
+//             child: const Text('Add a Task'),
+//             onPressed: () {
+//               Navigator.of(context).pushNamed(AddTaskScreen.routName);
+//             },
+//           ),
+//         ),
+//       ),
+//     );
+//   }
+// }
+
+class BoardScreen extends StatelessWidget {
   const BoardScreen({Key? key}) : super(key: key);
-
-  @override
-  ConsumerState<BoardScreen> createState() => _BoardScreenState();
-}
-
-class _BoardScreenState extends ConsumerState<BoardScreen> {
-  // bool _isLoading = false;
-
-  @override
-  void initState() {
-    // setState(() {
-    //   _isLoading = true;
-    // });
-
-    // ref.read(tasksProvider.notifier).fetchAlldata().then((value) {
-    //   setState(() {
-    //     _isLoading = false;
-    //   });
-    // });
-    // ref.read(tasksProvider.notifier).fetchAlldata();
-
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    // ref.read(tasksProvider.notifier).close().then((value) {});
-    super.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
@@ -48,15 +81,8 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
       length: 4,
       child: Scaffold(
         appBar: AppBar(
-          // elevation: 20,
           title: const Text('Board'),
           actions: [
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(
-            //     Icons.search,
-            //   ),
-            // ),
             IconButton(
               onPressed: () {
                 Navigator.of(context).pushNamed(ScheduleScreen.RoutName);
@@ -65,12 +91,6 @@ class _BoardScreenState extends ConsumerState<BoardScreen> {
                 Icons.notifications,
               ),
             ),
-            // IconButton(
-            //   onPressed: () {},
-            //   icon: const Icon(
-            //     Icons.menu,
-            //   ),
-            // ),
           ],
           bottom: const TabBar(
             //labelPadding: ,

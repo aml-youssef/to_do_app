@@ -5,9 +5,11 @@ import 'package:sqflite/sqflite.dart';
 import '../database/task_database.dart';
 
 class Tasks extends StateNotifier<List<Task>> {
-  Tasks() : super([]) {
+  Tasks(this._reader) : super([]) {
     fetchAlldata(); //.then((value) {});
   }
+
+  final Reader _reader;
 
   Future<void> toggle(int id) async {
     int taskIndex = _findById(id);

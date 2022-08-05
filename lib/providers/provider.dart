@@ -3,7 +3,7 @@ import '../models/tasks.dart';
 import '../models/task.dart';
 
 final tasksProvider = StateNotifierProvider<Tasks, List<Task>>((ref) {
-  return Tasks();
+  return Tasks(ref.read);
 });
 
 final filterTypeProvider =
@@ -11,7 +11,7 @@ final filterTypeProvider =
 
 final filteredTodoListProvider =
     FutureProvider.family<List<Task>, FilterType>((ref, type) async {
-  final FilterType filter = ref.watch(filterTypeProvider(type));
+  FilterType filter = ref.watch(filterTypeProvider(type));
   final List<Task> tasks = await ref.watch(tasksProvider);
   switch (filter) {
     case FilterType.completed:
