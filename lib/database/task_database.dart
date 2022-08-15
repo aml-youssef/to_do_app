@@ -1,5 +1,4 @@
 import 'dart:async';
-
 import 'package:sqflite/sqflite.dart';
 import 'package:path/path.dart';
 import '../models/task.dart';
@@ -74,7 +73,7 @@ class TaskDatabase {
   Future<List<Task>> readAllRows() async {
     final db = await instance.database;
 
-    const orderBy = '$tasksTableName ASC';
+    // const orderBy = '$tasksTableName ASC';
 
     final map = await db.query(
       tasksTableName,

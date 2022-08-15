@@ -1,9 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import '../models/task.dart';
-
 TextEditingController deadlineController = TextEditingController();
 String formatedDeadlineController = '';
+
 
 class DeadlineFormField extends StatelessWidget {
   const DeadlineFormField({Key? key}) : super(key: key);

@@ -147,8 +147,8 @@ class Task {
   }
 
   bool isSameDate(DateTime other) {
-    return this.date.year == other.year &&
-        this.date.month == other.month &&
-        this.date.day == other.day;
+    return date.year == other.year &&
+        date.month == other.month &&
+        date.day == other.day;
   }
 }

@@ -1,17 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
 import '../models/task.dart';
 
 class ScheduleTaskItem extends ConsumerWidget {
-  Task task;
-  ScheduleTaskItem({required this.task});
+  final Task task;
+  const ScheduleTaskItem({super.key , required this.task});
 
   @override
   Widget build(BuildContext context, ref) {
-    ref.watch(tasksProvider);
 
     return Card(
       shape: const RoundedRectangleBorder(

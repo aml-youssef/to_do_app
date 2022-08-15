@@ -1,18 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import '../widgets/tasks_list.dart';
-import '../widgets/schedule_task_Item.dart';
-import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../providers/provider.dart';
 import 'package:intl/intl.dart';
 import '../widgets/schedule_task_list.dart';
 
 class ScheduleScreen extends StatelessWidget {
   const ScheduleScreen({Key? key}) : super(key: key);
-  static const RoutName = '/ScheduleScreen';
+  static const routName = '/ScheduleScreen';
 
-  List<Widget> _7DaysTaps() {
+  List<Widget> sevenDaysTaps() {
     return [
       for (int i = 0; i < 7; i++)
         Padding(
@@ -28,7 +22,7 @@ class ScheduleScreen extends StatelessWidget {
     ];
   }
 
-  List<Widget> _7DaysTabBarView() {
+  List<Widget> sevenDaysTabBarView() {
     return [
       for (int i = 0; i < 7; i++)
         ScheduleTaskList(
@@ -62,11 +56,11 @@ class ScheduleScreen extends StatelessWidget {
               padding: const EdgeInsets.only(bottom: 16),
               labelColor: Colors.white,
               unselectedLabelColor: Colors.black,
-              tabs: _7DaysTaps(),
+              tabs: sevenDaysTaps(),
             ),
           ),
           body: TabBarView(
-            children: _7DaysTabBarView(),
+            children: sevenDaysTabBarView(),
           )),
     );
   }

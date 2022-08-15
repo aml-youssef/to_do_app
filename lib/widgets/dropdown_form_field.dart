@@ -1,16 +1,14 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
-import '../models/task.dart';
 
 late String dropdownReminder;
 late String dropdownRepeat;
 
 class DropDownFormField extends StatefulWidget {
-  List<String> options;
-  bool isReminder;
-  String Lable;
-  DropDownFormField(
-      {required this.options, required this.isReminder, required this.Lable});
+  final List<String> options;
+  final bool isReminder;
+  final String lable;
+   const DropDownFormField(
+      {super.key, required this.options, required this.isReminder, required this.lable});
   @override
   State<DropDownFormField> createState() => _DropDownFormFieldState();
 }
@@ -38,7 +36,7 @@ class _DropDownFormFieldState extends State<DropDownFormField> {
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: Text(
-              widget.Lable,
+              widget.lable,
               style: const TextStyle(fontWeight: FontWeight.bold),
             ),
           ),

@@ -1,27 +1,27 @@
 import 'package:flutter/material.dart';
+import 'package:to_do_app/screens/splash_screen.dart';
 import './screens/board_screen.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import './screens/add_task_screen.dart';
 import './screens/schedule_screen.dart';
 
 void main() {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-  runApp(ProviderScope(child: ToDoApp()));
-  // runApp(ToDoApp());
+  // WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+  runApp(const ProviderScope(child: ToDoApp()));
 }
 
 class ToDoApp extends StatelessWidget {
   const ToDoApp({Key? key}) : super(key: key);
 
-  // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'To Do',
-      home: BoardScreen(),
+      home: const SplashScreen(),
       routes: {
-        AddTaskScreen.routName: (cxt) => AddTaskScreen(),
-        ScheduleScreen.RoutName: (cxt) => ScheduleScreen(),
+        AddTaskScreen.routName: (cxt) => const AddTaskScreen(),
+        ScheduleScreen.routName: (cxt) => const ScheduleScreen(),
+        BoardScreen.routName: (cxt) => const BoardScreen(),
       },
       debugShowCheckedModeBanner: false,
       theme: ThemeData(

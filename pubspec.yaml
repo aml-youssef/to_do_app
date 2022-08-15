@@ -32,14 +32,15 @@ dependencies:
   flutter_riverpod: ^2.0.0-dev.9
   intl: ^0.17.0
   sqflite: ^2.0.3
-  flutter_native_splash: ^2.2.7
+  path: ^1.8.1
+#   flutter_native_splash: ^2.2.7
 
 
-flutter_native_splash:
-  color: "#ffffff"
-  android: false
-  ios: false
-  web: false
+# flutter_native_splash:
+#   color: "#ffffff"
+#   android: false
+#   ios: false
+#   web: false
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.

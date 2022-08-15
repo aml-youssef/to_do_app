@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:intl/intl.dart';
 import '../models/task.dart';
 
 TextEditingController startTimeController = TextEditingController();
@@ -7,9 +6,9 @@ TextEditingController endTimeController = TextEditingController();
 int toDouble(TimeOfDay myTime) => myTime.hour * 60 + myTime.minute;
 
 class TimeFormField extends StatelessWidget {
-  String lable;
-  bool start;
-  TimeFormField({required this.lable, required this.start});
+  final String lable;
+  final bool start;
+  const TimeFormField({super.key ,required this.lable, required this.start});
 
   @override
   Widget build(BuildContext context) {

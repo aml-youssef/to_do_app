@@ -1,16 +1,13 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'Task_item.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/tasks.dart';
 import '../models/task.dart';
 import '../providers/provider.dart';
-import './schedule_task_Item.dart';
+import 'schedule_task_item.dart';
 import 'package:intl/intl.dart';
 
 class ScheduleTaskList extends ConsumerWidget {
-  DateTime date;
-  ScheduleTaskList(this.date, {Key? key}) : super(key: key);
+  final DateTime date;
+  const ScheduleTaskList(this.date, {Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context, ref) {

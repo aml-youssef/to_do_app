@@ -1,9 +1,9 @@
 import 'package:flutter_riverpod/flutter_riverpod.dart';
-import '../models/tasks.dart';
+import 'tasks.dart';
 import '../models/task.dart';
 
 final tasksProvider = StateNotifierProvider<Tasks, List<Task>>((ref) {
-  return Tasks(ref.read);
+  return Tasks();
 });
 
 final filterTypeProvider =

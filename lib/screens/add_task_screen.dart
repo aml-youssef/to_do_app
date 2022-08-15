@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/src/foundation/key.dart';
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:intl/intl.dart';
-import '../widgets/form_items.dart';
-import '../models/tasks.dart';
 import '../models/task.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import '../providers/provider.dart';
@@ -50,11 +45,12 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
         reminder: Task.mapToReminder(dropdownReminder),
         title: titleController.text);
 
-    await ref.read(tasksProvider.notifier).addTask(newTask);
-    ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(content: Text('the Task was Added')),
-    );
-    Navigator.of(context).pop();
+    await ref.read(tasksProvider.notifier).addTask(newTask).whenComplete(() {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text('the Task was Added')),
+      );
+      Navigator.of(context).pop();
+    });
   }
 
   @override
@@ -79,22 +75,22 @@ class _AddTaskScreenState extends ConsumerState<AddTaskScreen> {
           child: SingleChildScrollView(
             child: Column(
               children: [
-                TitleFormField(),
-                DeadlineFormField(),
+                const TitleFormField(),
+                const DeadlineFormField(),
                 Row(
-                  children: [
+                  children: const[
                     TimeFormField(lable: 'Start time', start: true),
                     TimeFormField(lable: 'End time', start: false),
                   ],
                 ),
-                DropDownFormField(
+                const DropDownFormField(
                   options: reminderOptions,
-                  Lable: 'reminder',
+                  lable: 'reminder',
                   isReminder: true,
                 ),
-                DropDownFormField(
+                const DropDownFormField(
                   options: repeatOptions,
-                  Lable: 'Repeat',
+                  lable: 'Repeat',
                   isReminder: false,
                 ),
               ],
